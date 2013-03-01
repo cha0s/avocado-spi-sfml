@@ -1,11 +1,11 @@
 #ifndef AVOCADO_SFMLCOUNTER_H
 #define AVOCADO_SFMLCOUNTER_H
 
-#include "main/avocado-global.h"
+#include "core/avocado-global.h"
 
 #include <SFML/System/Clock.hpp>
 
-#include "main/Timing/Counter.h"
+#include "core/Timing/Counter.h"
 
 namespace avo {
 

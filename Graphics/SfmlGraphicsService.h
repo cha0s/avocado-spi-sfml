@@ -1,9 +1,9 @@
 #ifndef AVOCADO_SFMLGRAPHICSSERVICE_H
 #define AVOCADO_SFMLGRAPHICSSERVICE_H
 
-#include "main/avocado-global.h"
+#include "core/avocado-global.h"
 
-#include "main/Graphics/GraphicsService.h"
+#include "core/Graphics/GraphicsService.h"
 
 namespace avo {
 

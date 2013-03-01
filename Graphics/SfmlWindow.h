@@ -1,11 +1,11 @@
 #ifndef AVOCADO_SFMLWINDOW_H
 #define AVOCADO_SFMLWINDOW_H
 
-#include "main/avocado-global.h"
+#include "core/avocado-global.h"
 
 #include <string>
 
-#include "main/Graphics/Window.h"
+#include "core/Graphics/Window.h"
 
 #include <SFML/Graphics.hpp>
 

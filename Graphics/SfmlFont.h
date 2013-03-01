@@ -1,9 +1,9 @@
 #ifndef AVOCADO_FONT_H
 #define AVOCADO_FONT_H
 
-#include "main/avocado-global.h"
+#include "core/avocado-global.h"
 
-#include "main/Graphics/Font.h"
+#include "core/Graphics/Font.h"
 #include "SfmlImage.h"
 
 namespace avo {

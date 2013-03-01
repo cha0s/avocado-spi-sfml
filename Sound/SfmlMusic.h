@@ -1,11 +1,11 @@
 #ifndef AVOCADO_SFMLMUSIC_H
 #define AVOCADO_SFMLMUSIC_H
 
-#include "main/avocado-global.h"
+#include "core/avocado-global.h"
 
 #include <SFML/Audio.hpp>
 
-#include "main/Sound/Music.h"
+#include "core/Sound/Music.h"
 
 namespace avo {
 

@@ -1,11 +1,11 @@
 #ifndef AVOCADO_SFMLSSAMPLE_H
 #define AVOCADO_SFMLSSAMPLE_H
 
-#include "main/avocado-global.h"
+#include "core/avocado-global.h"
 
 #include <SFML/Audio.hpp>
 
-#include "main/Sound/Sample.h"
+#include "core/Sound/Sample.h"
 
 namespace avo {
 
