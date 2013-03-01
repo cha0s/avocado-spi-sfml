@@ -5,7 +5,7 @@
 
 #include <SFML/System/Clock.hpp>
 
-#include "SPI/Abstract/Timing/Counter.h"
+#include "main/Timing/Counter.h"
 
 namespace avo {
 

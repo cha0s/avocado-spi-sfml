@@ -5,7 +5,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "SPI/Abstract/Graphics/Image.h"
+#include "main/Graphics/Image.h"
 
 namespace avo {
 

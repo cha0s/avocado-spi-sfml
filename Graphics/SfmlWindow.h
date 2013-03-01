@@ -5,7 +5,7 @@
 
 #include <string>
 
-#include "SPI/Abstract/Graphics/Window.h"
+#include "main/Graphics/Window.h"
 
 #include <SFML/Graphics.hpp>
 

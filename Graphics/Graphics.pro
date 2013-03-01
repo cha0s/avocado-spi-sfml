@@ -1,6 +1,6 @@
 TARGET = GraphicsService-sfml
 
-include(../../Abstract/Graphics/Graphics.pri)
+include(../../../main/Graphics/Graphics.pri)
 
 SOURCES += \
 	\

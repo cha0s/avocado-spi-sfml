@@ -1,6 +1,6 @@
 TARGET = SoundService-sfml
 
-include(../../Abstract/Sound/Sound.pri)
+include(../../../main/Sound/Sound.pri)
 
 SOURCES += \
 	\

@@ -1,6 +1,6 @@
 TARGET = TimingService-sfml
 
-include(../../Abstract/Timing/Timing.pri)
+include(../../../main/Timing/Timing.pri)
 
 SOURCES += \
 	\

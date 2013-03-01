@@ -3,7 +3,7 @@
 
 #include "main/avocado-global.h"
 
-#include "SPI/Abstract/Graphics/Font.h"
+#include "main/Graphics/Font.h"
 #include "SfmlImage.h"
 
 namespace avo {

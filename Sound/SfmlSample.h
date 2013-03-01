@@ -5,7 +5,7 @@
 
 #include <SFML/Audio.hpp>
 
-#include "SPI/Abstract/Sound/Sample.h"
+#include "main/Sound/Sample.h"
 
 namespace avo {
 

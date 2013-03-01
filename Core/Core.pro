@@ -1,6 +1,6 @@
 TARGET = CoreService-sfml
 
-include(../../Abstract/Core/Core.pri)
+include(../../../main/Core/Core.pri)
 
 SOURCES += \
 	\
