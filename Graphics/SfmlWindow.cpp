@@ -29,7 +29,7 @@ void SfmlWindow::display() {
 int keyCodeMap(sf::Keyboard::Key keyCode) {
 
 	int mappedKeyCode;
-	std::map<std::string, int> KeyCodes = Window::Event::KeyCodes();
+	const std::map<std::string, int> &KeyCodes = Window::Event::KeyCodes();
 
 	switch (keyCode) {
 
@@ -142,7 +142,7 @@ int keyCodeMap(sf::Keyboard::Key keyCode) {
 int mouseButtonMap(sf::Mouse::Button button) {
 
 	int mappedButton;
-	std::map<std::string, int> MouseButtons = Window::Event::MouseButtons();
+	const std::map<std::string, int> &MouseButtons = Window::Event::MouseButtons();
 
 	switch (button) {
 	case sf::Mouse::Left: mappedButton = MouseButtons["ButtonLeft"]; break;
