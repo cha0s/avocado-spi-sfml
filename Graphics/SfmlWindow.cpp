@@ -26,10 +26,28 @@ void SfmlWindow::display() {
 	window->display();
 }
 
+int mouseButtonMap(sf::Mouse::Button button) {
+
+	int mappedButton;
+	std::map<std::string, int> MouseButtons = Window::Event::MouseButtons();
+
+	switch (button) {
+		case sf::Mouse::Left: button = MouseButtons["ButtonLeft"]; break;
+		case sf::Mouse::Middle: button = MouseButtons["ButtonMiddle"]; break;
+		case sf::Mouse::Right: button = MouseButtons["ButtonRight"]; break;
+		case sf::Mouse::XButton1: button = MouseButtons["WheelUp"]; break;
+		case sf::Mouse::XButton2: button = MouseButtons["WheelDown"]; break;
+		default: break;
+	}
+
+	return mappedButton;
+}
+
 Window::Event SfmlWindow::pollEvents() {
 
 	Event event;
 	sf::Event sfmlEvent;
+
 	while (window->pollEvent(sfmlEvent)) {
 
 		switch (sfmlEvent.type) {
@@ -116,19 +134,10 @@ Window::Event SfmlWindow::pollEvents() {
 
 		case sf::Event::MouseButtonPressed: {
 
-			Event::MouseButtons button;
-			switch (sfmlEvent.mouseButton.button) {
-				case sf::Mouse::Left: button = Event::LeftButton; break;
-				case sf::Mouse::Middle: button = Event::MiddleButton; break;
-				case sf::Mouse::Right: button = Event::RightButton; break;
-				case sf::Mouse::XButton1: button = Event::WheelUp; break;
-				case sf::Mouse::XButton2: button = Event::WheelDown; break;
-				default: break;
-			}
 			Event::MouseButtonDown mouseDown = {
 				sfmlEvent.mouseButton.x,
 				sfmlEvent.mouseButton.y,
-				button
+				mouseButtonMap(sfmlEvent.mouseButton.button)
 			};
 			event.mouseButtonDown.push_back(mouseDown);
 
@@ -137,19 +146,10 @@ Window::Event SfmlWindow::pollEvents() {
 
 		case sf::Event::MouseButtonReleased: {
 
-			Event::MouseButtons button;
-			switch (sfmlEvent.mouseButton.button) {
-				case sf::Mouse::Left: button = Event::LeftButton; break;
-				case sf::Mouse::Middle: button = Event::MiddleButton; break;
-				case sf::Mouse::Right: button = Event::RightButton; break;
-				case sf::Mouse::XButton1: button = Event::WheelUp; break;
-				case sf::Mouse::XButton2: button = Event::WheelDown; break;
-				default: break;
-			}
 			Event::MouseButtonUp mouseUp = {
 				sfmlEvent.mouseButton.x,
 				sfmlEvent.mouseButton.y,
-				button
+				mouseButtonMap(sfmlEvent.mouseButton.button)
 			};
 			event.mouseButtonUp.push_back(mouseUp);
 
