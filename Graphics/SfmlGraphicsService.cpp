@@ -23,16 +23,4 @@ void SfmlGraphicsService::close() {
 	GraphicsService::close();
 }
 
-GraphicsService::SpecialKeyCodes SfmlGraphicsService::specialKeyCodes() {
-
-	SpecialKeyCodes keyMap;
-
-	keyMap.UpArrow = 73;
-	keyMap.RightArrow = 72;
-	keyMap.DownArrow = 74;
-	keyMap.LeftArrow = 71;
-
-	return keyMap;
-}
-
 }
