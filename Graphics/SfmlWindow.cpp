@@ -139,6 +139,7 @@ int keyCodeMap(sf::Keyboard::Key keyCode) {
 
 	return mappedKeyCode;
 }
+
 int mouseButtonMap(sf::Mouse::Button button) {
 
 	int mappedButton;

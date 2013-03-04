@@ -111,27 +111,27 @@ void SfmlImage::drawFilledBox(int x, int y, int w, int h, int r, int g, int b, i
 }
 
 void SfmlImage::drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, int a, DrawMode drawMode) {
-	AVOCADO_UNUSED(x1);
-	AVOCADO_UNUSED(y1);
-	AVOCADO_UNUSED(x2);
-	AVOCADO_UNUSED(y2);
-	AVOCADO_UNUSED(r);
-	AVOCADO_UNUSED(g);
-	AVOCADO_UNUSED(b);
-	AVOCADO_UNUSED(a);
 	AVOCADO_UNUSED(drawMode);
+
+	sf::VertexArray lines(sf::LinesStrip, 2);
+	lines[0].position = sf::Vector2f(x1, y1);
+	lines[0].color = sf::Color(r, g, b, a);
+	lines[1].position = sf::Vector2f(x2, y2);
+	lines[1].color = sf::Color(r, g, b, a);
+
+	renderTexture->draw(lines);
 }
 
 void SfmlImage::drawLineBox(int x, int y, int w, int h, int r, int g, int b, int a, DrawMode drawMode) {
-	AVOCADO_UNUSED(x);
-	AVOCADO_UNUSED(y);
-	AVOCADO_UNUSED(w);
-	AVOCADO_UNUSED(h);
-	AVOCADO_UNUSED(r);
-	AVOCADO_UNUSED(g);
-	AVOCADO_UNUSED(b);
-	AVOCADO_UNUSED(a);
 	AVOCADO_UNUSED(drawMode);
+
+	sf::RectangleShape box;
+	box.setSize(sf::Vector2f(w, h));
+	box.setOutlineColor(sf::Color(r, g, b, a));
+	box.setOutlineThickness(1);
+	box.setFillColor(sf::Color(0, 0, 0, 0));
+	box.setPosition(x, y);
+	renderTexture->draw(box);
 }
 
 void SfmlImage::fill(int r, int g, int b, int a) {
