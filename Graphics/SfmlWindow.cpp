@@ -270,7 +270,7 @@ Window::Event SfmlWindow::pollEvents() {
 			break;
 		}
 
-		case sf::Event::MouseMoved: {
+		case sf::Event::MouseWheelMoved: {
 
 			Event::MouseWheelMove mouseWheelMove = {
 				sfmlEvent.mouseWheel.delta > 0 ? 1 : -1
