@@ -272,6 +272,16 @@ Window::Event SfmlWindow::pollEvents() {
 
 		case sf::Event::MouseMoved: {
 
+			Event::MouseWheelMove mouseWheelMove = {
+				sfmlEvent.mouseWheel.delta > 0 ? 1 : -1
+			};
+			event.mouseWheelMove.push_back(mouseWheelMove);
+
+			break;
+		}
+
+		case sf::Event::MouseMoved: {
+
 			Event::MouseMove mouseMove = {
 				sfmlEvent.mouseMove.x,
 				sfmlEvent.mouseMove.y
