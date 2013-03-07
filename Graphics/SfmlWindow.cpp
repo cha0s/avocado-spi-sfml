@@ -151,7 +151,7 @@ int mouseButtonMap(sf::Mouse::Button button) {
 	case sf::Mouse::Right: mappedButton = MouseButtons.at("ButtonRight"); break;
 	case sf::Mouse::XButton1: mappedButton = MouseButtons.at("WheelUp"); break;
 	case sf::Mouse::XButton2: mappedButton = MouseButtons.at("WheelDown"); break;
-	default: break;
+	default: mappedButton = -1; break;
 	}
 
 	return mappedButton;
