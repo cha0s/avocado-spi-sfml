@@ -7,6 +7,8 @@
 
 #include "core/Graphics/Image.h"
 
+#include "SfmlCanvas.h"
+
 namespace avo {
 
 /**
@@ -39,38 +41,17 @@ public:
 	SfmlImage(const boost::filesystem::path &uri);
 
 	/**
-	 * Build an sf::RenderTexture to given width/height specifications.
-	 */
-	SfmlImage(int width, int height);
-
-	/**
 	 * Destroy sf::RenderTexture.
 	 */
 	~SfmlImage();
 
 	void display();
 
-	void drawCircle(int x, int y, int radius, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend);
-
-	void drawFilledBox(int x, int y, int w, int h, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend);
-
-	void drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend);
-
-	void drawLineBox(int x, int y, int w, int h, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend);
-
-	void fill(int r, int g, int b, int a = 255);
-
 	int height() const;
 
 	bool isValid() const { return width() != 0 && height() != 0; }
 
-	unsigned int pixelAt(int x, int y) const;
-
-	void render(int x, int y, Image *destination, int alpha = 255, DrawMode mode = DrawMode_Blend, int sx = 0, int sy = 0, int sw = 0, int sh = 0) const AVOCADO_ENSURE_STACK_ALIGNED_FOR_SSE;
-
-	void saveToFile(const boost::filesystem::path &filename);
-
-	void setPixelAt(int x, int y, unsigned int pixel);
+	void render(int x, int y, Canvas *destination, int alpha = 255, DrawMode mode = DrawMode_Blend, int sx = 0, int sy = 0, int sw = 0, int sh = 0) const AVOCADO_ENSURE_STACK_ALIGNED_FOR_SSE;
 
 	int width() const;
 
@@ -78,7 +59,7 @@ public:
 
 private:
 
-	sf::RenderTexture *renderTexture;
+	sf::Texture *texture;
 
 };
 
@@ -95,10 +76,6 @@ class AbstractFactory<SfmlImage> : public AbstractFactory<Image> {
 
 	SfmlImage *create(const boost::filesystem::path &uri) {
 		return new SfmlImage(uri);
-	}
-
-	SfmlImage *create(int width, int height) {
-		return new SfmlImage(width, height);
 	}
 
 	SfmlImage *create() {

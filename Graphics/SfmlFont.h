@@ -4,7 +4,7 @@
 #include "core/avocado-global.h"
 
 #include "core/Graphics/Font.h"
-#include "SfmlImage.h"
+#include "SfmlCanvas.h"
 
 namespace avo {
 
@@ -39,7 +39,7 @@ public:
 	 * blending and draw mode, using the given sx, sy, sw, sh source rectangle
 	 * to clip.
 	 */
-	void render(int x, int y, Image *destination, const std::string &text, int cx, int cy, int cw, int ch) const;
+	void render(int x, int y, Canvas *destination, const std::string &text, int cx, int cy, int cw, int ch) const;
 
 	/**
 	 * Set the font size.

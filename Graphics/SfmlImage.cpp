@@ -8,126 +8,34 @@ AbstractFactory<SfmlImage> *SfmlImage::factory = new AbstractFactory<SfmlImage>;
 
 SfmlImage::SfmlImage()
 	: Image()
-	, renderTexture(new sf::RenderTexture())
+	, texture(new sf::Texture())
 {
-}
-
-SfmlImage::SfmlImage(int width, int height)
-	: Image()
-	, renderTexture(new sf::RenderTexture())
-{
-	if (!renderTexture->create(width, height)) throw std::runtime_error(
-		"sf::RenderTexture::create(width, height) failed."
-	);
-	renderTexture->clear(sf::Color(0, 0, 0, 0));
-	renderTexture->display();
 }
 
 SfmlImage::SfmlImage(const boost::filesystem::path &uri)
 	: Image()
-	, renderTexture(new sf::RenderTexture())
+	, texture(new sf::Texture())
 {
 
-	sf::Texture texture;
-	if (!texture.loadFromFile(uri.c_str())) throw std::runtime_error(
+	if (!texture->loadFromFile(uri.c_str())) throw std::runtime_error(
 		"SfmlImage::SfmlImage(uri): SFML couldn't load image."
 	);
-	sf::Vector2u vector = texture.getSize();
-	renderTexture->create(vector.x, vector.y);
-	renderTexture->clear();
-	renderTexture->draw(
-		sf::Sprite(texture),
-		sf::RenderStates(sf::BlendNone)
-	);
-	renderTexture->display();
 
 	setUri(uri);
 }
 
 SfmlImage::~SfmlImage() {
-	if (renderTexture) delete renderTexture;
-}
-
-void SfmlImage::display() {
-	renderTexture->display();
-}
-
-unsigned int SfmlImage::pixelAt(int x, int y) const {
-	AVOCADO_UNUSED(x);
-	AVOCADO_UNUSED(y);
-
-	return 0;
-}
-
-void SfmlImage::drawCircle(int x, int y, int radius, int r, int g, int b, int a, DrawMode drawMode) {
-	AVOCADO_UNUSED(drawMode);
-
-	sf::CircleShape circle;
-	circle.setRadius(radius);
-	circle.setPointCount(60);
-	circle.setFillColor(sf::Color(r, g, b, a));
-	circle.setOutlineColor(sf::Color(r, g, b, a));
-	circle.setOutlineThickness(1);
-	circle.setPosition(x - radius, y - radius);
-
-	renderTexture->draw(
-		circle,
-		sf::RenderStates(
-			DrawMode_Blend == drawMode ?
-				sf::BlendAlpha
-			:
-				sf::BlendNone
-			)
-	);
-}
-
-void SfmlImage::drawFilledBox(int x, int y, int w, int h, int r, int g, int b, int a, DrawMode drawMode) {
-	AVOCADO_UNUSED(drawMode);
-
-	sf::RectangleShape box;
-	box.setSize(sf::Vector2f(w, h));
-	box.setOutlineColor(sf::Color(r, g, b, a));
-	box.setFillColor(sf::Color(r, g, b, a));
-	box.setPosition(x, y);
-	renderTexture->draw(box);
-}
-
-void SfmlImage::drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, int a, DrawMode drawMode) {
-	AVOCADO_UNUSED(drawMode);
-
-	sf::VertexArray lines(sf::LinesStrip, 2);
-	lines[0].position = sf::Vector2f(x1, y1);
-	lines[0].color = sf::Color(r, g, b, a);
-	lines[1].position = sf::Vector2f(x2, y2);
-	lines[1].color = sf::Color(r, g, b, a);
-
-	renderTexture->draw(lines);
-}
-
-void SfmlImage::drawLineBox(int x, int y, int w, int h, int r, int g, int b, int a, DrawMode drawMode) {
-	AVOCADO_UNUSED(drawMode);
-
-	sf::RectangleShape box;
-	box.setSize(sf::Vector2f(w, h));
-	box.setOutlineColor(sf::Color(r, g, b, a));
-	box.setOutlineThickness(1);
-	box.setFillColor(sf::Color(0, 0, 0, 0));
-	box.setPosition(x, y);
-	renderTexture->draw(box);
-}
-
-void SfmlImage::fill(int r, int g, int b, int a) {
-	renderTexture->clear(sf::Color(r, g, b, a));
+	if (texture) delete texture;
 }
 
 int SfmlImage::height() const {
-	return renderTexture->getSize().y;
+	return texture->getSize().y;
 }
 
-void SfmlImage::render(int x, int y, Image *destination, int alpha, DrawMode mode, int sx, int sy, int sw, int sh) const {
+void SfmlImage::render(int x, int y, Canvas *destination, int alpha, DrawMode mode, int sx, int sy, int sw, int sh) const {
 
 	sf::Sprite sprite;
-	sprite.setTexture(renderTexture->getTexture());
+	sprite.setTexture(*texture);
 	sprite.setPosition(sf::Vector2f(x, y));
 	sprite.setColor(sf::Color(255, 255, 255, alpha));
 	sf::IntRect rect(sx, sy, sw, sh);
@@ -148,24 +56,14 @@ void SfmlImage::render(int x, int y, Image *destination, int alpha, DrawMode mod
 		break;
 	}
 
-	superCast<SfmlImage>(destination)->renderTexture->draw(
+	Canvas::superCast<SfmlCanvas>(destination)->renderTexture->draw(
 		sprite,
 		renderStates
 	);
 }
 
-void SfmlImage::saveToFile(const boost::filesystem::path &filename) {
-	renderTexture->getTexture().copyToImage().saveToFile(filename.string());
-}
-
-void SfmlImage::setPixelAt(int x, int y, unsigned int pixel) {
-	AVOCADO_UNUSED(x);
-	AVOCADO_UNUSED(y);
-	AVOCADO_UNUSED(pixel);
-}
-
 int SfmlImage::width() const {
-	return renderTexture->getSize().x;
+	return texture->getSize().x;
 }
 
 }

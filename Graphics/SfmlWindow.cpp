@@ -318,13 +318,25 @@ Window::Event SfmlWindow::pollEvents() {
 	return event;
 }
 
+void SfmlWindow::render(Canvas *working, int x, int y, int w, int h) {
+	AVOCADO_UNUSED(x);
+	AVOCADO_UNUSED(y);
+	AVOCADO_UNUSED(w);
+	AVOCADO_UNUSED(h);
+	sf::Sprite sprite(
+		Canvas::superCast<SfmlCanvas>(working)->renderTexture->getTexture()
+	);
+	window->clear();
+	window->draw(sprite);
+}
+
 void SfmlWindow::render(Image *working, int x, int y, int w, int h) {
 	AVOCADO_UNUSED(x);
 	AVOCADO_UNUSED(y);
 	AVOCADO_UNUSED(w);
 	AVOCADO_UNUSED(h);
 	sf::Sprite sprite(
-		Image::superCast<SfmlImage>(working)->renderTexture->getTexture()
+		*Image::superCast<SfmlImage>(working)->texture
 	);
 	window->clear();
 	window->draw(sprite);

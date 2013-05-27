@@ -32,6 +32,8 @@ public:
 
 	Event pollEvents();
 
+	void render(Canvas *working, int x, int y, int w, int h);
+
 	void render(Image *working, int x, int y, int w, int h);
 
 	void setFlags(WindowFlags flags = Flags_Default);
