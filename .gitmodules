@@ -1,3 +1,0 @@
-[submodule "deps/SFML"]
-	path = deps/SFML
-	url = git://github.com/LaurentGomila/SFML.git
