@@ -117,7 +117,7 @@ void SfmlCanvas::drawLineBox(int x, int y, int w, int h, int r, int g, int b, in
 }
 
 void SfmlCanvas::fill(int r, int g, int b, int a) {
-	renderTexture->clear(sf::Color(r, g, b, a));
+	drawFilledBox(0, 0, width(), height(), r, g, b, a);
 }
 
 int SfmlCanvas::height() const {
