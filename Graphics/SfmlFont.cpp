@@ -29,13 +29,11 @@ SfmlFont::~SfmlFont() {
 //	delete font;
 }
 
-void SfmlFont::render(int x, int y, Canvas *destination, const std::string &text, int cx, int cy, int cw, int ch) const {
-	AVOCADO_UNUSED(cx);
-	AVOCADO_UNUSED(cy);
-	AVOCADO_UNUSED(cw);
-	AVOCADO_UNUSED(ch);
+void SfmlFont::render(int x, int y, const std::string &text, Canvas *destination, int r, int g, int b, int a, int cx, int cy, int cw, int ch) const {
 
 	sf::Text sfmlText = sf::Text(text, *font, size);
+	sfmlText.setColor(sf::Color(r, g, b, a));
+
 	texture->clear(sf::Color(0, 0, 0, 0));
 	texture->display();
 	texture->draw(sfmlText);
