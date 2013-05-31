@@ -7,19 +7,20 @@ AbstractFactory<Font> *SfmlFont::factory = new AbstractFactory<SfmlFont>;
 SfmlFont::SfmlFont()
 	: font(new sf::Font())
 	, texture(new sf::RenderTexture())
-	, size(12)
 {
+	setSize(12);
 }
 
 SfmlFont::SfmlFont(const boost::filesystem::path &uri)
 	: font(new sf::Font())
 	, texture(new sf::RenderTexture())
-	, size(12)
 {
 
 	if (!font->loadFromFile(uri.c_str())) throw std::runtime_error(
 		"sf::Font::loadFromFile(uri) failed."
 	);
+	
+	setSize(12);
 }
 
 SfmlFont::~SfmlFont() {
