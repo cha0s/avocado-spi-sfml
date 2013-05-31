@@ -40,10 +40,10 @@ PRE_TARGETDEPS += s
 
 win32 {
 	debug {
-		rm -f debug/libdeps*
+		QMAKE_POST_LINK = rm -f debug/libdeps*
 	}
-	release {
-		rm -f release/libdeps*
+	else {
+		QMAKE_POST_LINK = rm -f release/libdeps*
 	}
 }
 else {
