@@ -15,6 +15,9 @@ HEADERS += \
 	SfmlCounter.h
 
 INCLUDEPATH += ../deps/SFML/include
-LIBS += -L../deps/SFML/build/lib
-LIBS += -lsfml-system-s -lrt
+
+LIBS += -L../deps/SFML/build/lib -lsfml-system-s
+!win32 {
+	LIBS += -lrt
+}
 	

@@ -15,5 +15,12 @@ HEADERS += \
 	SfmlCanvas.h SfmlFont.h SfmlImage.h SfmlWindow.h
 
 INCLUDEPATH += ../deps/SFML/include
-LIBS += -L../deps/SFML/build/lib
-LIBS += -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lGL -lXrandr -ljpeg -lGLEW -lrt -lfreetype
+
+LIBS += -L../deps/SFML/build/lib -lsfml-graphics-s -lsfml-window-s -lsfml-system-s
+win32 {
+	LIBS += -L../deps/SFML/extlibs/libs-mingw/x86 -lglew
+}
+else {
+	LIBS += -lGL -lXrandr -lGLEW -lrt
+}
+LIBS += -ljpeg -lfreetype

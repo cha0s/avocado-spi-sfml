@@ -3,6 +3,8 @@
 
 #include "core/avocado-global.h"
 
+#define SFML_STATIC
+
 #include <SFML/Audio.hpp>
 
 #include "core/Sound/Sample.h"

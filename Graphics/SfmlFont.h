@@ -3,6 +3,8 @@
 
 #include "core/avocado-global.h"
 
+#define SFML_STATIC
+
 #include "core/Graphics/Font.h"
 #include "SfmlCanvas.h"
 

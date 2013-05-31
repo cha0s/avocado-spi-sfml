@@ -29,7 +29,7 @@ SfmlCanvas::SfmlCanvas(const boost::filesystem::path &uri)
 {
 
 	sf::Texture texture;
-	if (!texture.loadFromFile(uri.c_str())) throw std::runtime_error(
+	if (!texture.loadFromFile(uri.string().c_str())) throw std::runtime_error(
 		"SfmlCanvas::SfmlCanvas(uri): loading failed."
 	);
 	sf::Vector2u vector = texture.getSize();

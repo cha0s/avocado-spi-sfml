@@ -3,6 +3,8 @@
 
 #include "core/avocado-global.h"
 
+#define SFML_STATIC
+
 #include "core/Graphics/GraphicsService.h"
 
 namespace avo {

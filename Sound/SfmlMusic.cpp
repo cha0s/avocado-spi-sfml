@@ -14,7 +14,7 @@ SfmlMusic::SfmlMusic()
 SfmlMusic::SfmlMusic(const boost::filesystem::path &uri)
 	: music(new sf::Music())
 {
-	if (!music->openFromFile(uri.c_str())) {
+	if (!music->openFromFile(uri.string().c_str())) {
 		throw std::runtime_error(
 			"sf::Music::openFromFile() failed!"
 		);

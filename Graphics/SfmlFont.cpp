@@ -16,7 +16,7 @@ SfmlFont::SfmlFont(const boost::filesystem::path &uri)
 	, texture(new sf::RenderTexture())
 {
 
-	if (!font->loadFromFile(uri.c_str())) throw std::runtime_error(
+	if (!font->loadFromFile(uri.string().c_str())) throw std::runtime_error(
 		"sf::Font::loadFromFile(uri) failed."
 	);
 	

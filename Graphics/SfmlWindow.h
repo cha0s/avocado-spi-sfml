@@ -3,6 +3,8 @@
 
 #include "core/avocado-global.h"
 
+#define SFML_STATIC
+
 #include <string>
 
 #include "core/Graphics/Window.h"

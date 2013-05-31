@@ -17,7 +17,7 @@ SfmlSample::SfmlSample(const boost::filesystem::path &uri)
 
 	sf::SoundBuffer *buffer = new sf::SoundBuffer();
 
-	if (!buffer->loadFromFile(uri.c_str())) {
+	if (!buffer->loadFromFile(uri.string().c_str())) {
 
 		throw std::runtime_error(
 			"sf::SoundBuffer::loadFromFile() failed!"

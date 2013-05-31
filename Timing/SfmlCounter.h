@@ -3,6 +3,8 @@
 
 #include "core/avocado-global.h"
 
+#define SFML_STATIC
+
 #include <SFML/System/Clock.hpp>
 
 #include "core/Timing/Counter.h"

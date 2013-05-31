@@ -20,7 +20,13 @@ sfmllib.commands += \
 	test ! -d build \
 		&& mkdir build \
 		&& cd build \
-		&& cmake -DBUILD_SHARED_LIBS=off .. \
+		&& cmake
+		
+win32 {
+	sfmllib.commands += -G "'MSYS Makefiles'"
+}
+
+sfmllib.commands += -DBUILD_SHARED_LIBS=off .. \
 		&& make \
 		&& cd .. \
 	cd ../..; \
@@ -32,4 +38,14 @@ QMAKE_EXTRA_TARGETS += sfmllib
 
 PRE_TARGETDEPS += s
 
-QMAKE_POST_LINK = rm libdeps*
+win32 {
+	debug {
+		rm -f debug/libdeps*
+	}
+	release {
+		rm -f release/libdeps*
+	}
+}
+else {
+	QMAKE_POST_LINK = rm -f libdeps*
+}

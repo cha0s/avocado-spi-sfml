@@ -17,7 +17,7 @@ SfmlImage::SfmlImage(const boost::filesystem::path &uri)
 	, texture(new sf::Texture())
 {
 
-	if (!texture->loadFromFile(uri.c_str())) throw std::runtime_error(
+	if (!texture->loadFromFile(uri.string().c_str())) throw std::runtime_error(
 		"SfmlImage::SfmlImage(uri): SFML couldn't load image."
 	);
 
