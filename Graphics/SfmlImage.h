@@ -29,9 +29,6 @@ class SfmlImage : public Image {
 
 public:
 
-	friend class SfmlFont;
-	friend class SfmlWindow;
-
 	/**
 	 * Build a NULL sf::RenderTexture.
 	 */
@@ -53,15 +50,15 @@ public:
 
 	bool isValid() const { return width() != 0 && height() != 0; }
 
-	void render(int x, int y, Canvas *destination, int alpha = 255, DrawMode mode = DrawMode_Blend, int sx = 0, int sy = 0, int sw = 0, int sh = 0) const AVOCADO_ENSURE_STACK_ALIGNED_FOR_SSE;
-
 	int width() const;
+
+	sf::Texture *texture() const;
 
 	static AbstractFactory<SfmlImage> *factory;
 
 private:
 
-	sf::Texture *texture;
+	sf::Texture *_texture;
 
 };
 

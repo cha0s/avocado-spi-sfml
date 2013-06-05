@@ -5,6 +5,7 @@
 #include "SfmlCanvas.h"
 #include "SfmlFont.h"
 #include "SfmlImage.h"
+#include "SfmlSprite.h"
 #include "SfmlWindow.h"
 
 namespace avo {
@@ -15,6 +16,7 @@ SfmlGraphicsService::SfmlGraphicsService() {
 	Canvas::factoryManager.setInstance(SfmlCanvas::factory);
 	Image::factoryManager.setInstance(SfmlImage::factory);
 	Font::factoryManager.setInstance(SfmlFont::factory);
+	Sprite::factoryManager.setInstance(SfmlSprite::factory);
 	Window::factoryManager.setInstance(SfmlWindow::factory);
 }
 

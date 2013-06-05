@@ -34,10 +34,6 @@ public:
 
 	Event pollEvents();
 
-	void render(Canvas *working, int x, int y, int w, int h);
-
-	void render(Image *working, int x, int y, int w, int h);
-
 	void setFlags(WindowFlags flags = Flags_Default);
 
 	void setSize(int width, int height);
@@ -46,13 +42,15 @@ public:
 
 	void setWindowTitle(const std::string &title, const std::string &iconified = "");
 
+	sf::RenderWindow *window();
+
 	static AbstractFactory<SfmlWindow> *factory;
 
 private:
 
 	void set();
 
-	sf::RenderWindow *window;
+	sf::RenderWindow *_window;
 
 	std::string m_title;
 };

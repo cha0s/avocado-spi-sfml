@@ -27,10 +27,6 @@ class SfmlCanvas : public Canvas {
 
 public:
 
-	friend class SfmlImage;
-	friend class SfmlFont;
-	friend class SfmlWindow;
-
 	/**
 	 * Build a NULL sf::RenderTexture.
 	 */
@@ -53,13 +49,13 @@ public:
 
 	void display();
 
-	void drawCircle(int x, int y, int radius, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend);
+	void drawCircle(int x, int y, int radius, int r, int g, int b, int a = 255, GraphicsService::BlendMode drawMode = GraphicsService::BlendMode_Blend);
 
-	void drawFilledBox(int x, int y, int w, int h, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend);
+	void drawFilledBox(int x, int y, int w, int h, int r, int g, int b, int a = 255, GraphicsService::BlendMode drawMode = GraphicsService::BlendMode_Blend);
 
-	void drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend);
+	void drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, int a = 255, GraphicsService::BlendMode drawMode = GraphicsService::BlendMode_Blend);
 
-	void drawLineBox(int x, int y, int w, int h, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend);
+	void drawLineBox(int x, int y, int w, int h, int r, int g, int b, int a = 255, GraphicsService::BlendMode drawMode = GraphicsService::BlendMode_Blend);
 
 	void fill(int r, int g, int b, int a = 255);
 
@@ -69,19 +65,19 @@ public:
 
 	unsigned int pixelAt(int x, int y) const;
 
-	void render(int x, int y, Canvas *destination, int alpha = 255, DrawMode mode = DrawMode_Blend, int sx = 0, int sy = 0, int sw = 0, int sh = 0) const AVOCADO_ENSURE_STACK_ALIGNED_FOR_SSE;
-
 	void saveToFile(const boost::filesystem::path &filename);
 
 	void setPixelAt(int x, int y, unsigned int pixel);
 
 	int width() const;
 
+	sf::RenderTexture *renderTexture();
+
 	static AbstractFactory<SfmlCanvas> *factory;
 
 private:
 
-	sf::RenderTexture *renderTexture;
+	sf::RenderTexture *_renderTexture;
 
 };
 

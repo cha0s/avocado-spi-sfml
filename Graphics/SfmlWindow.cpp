@@ -14,16 +14,16 @@ AbstractFactory<SfmlWindow> *SfmlWindow::factory = new AbstractFactory<SfmlWindo
 
 SfmlWindow::SfmlWindow()
 	: Window()
-	, window(new sf::RenderWindow())
+	, _window(new sf::RenderWindow())
 {
 }
 
 SfmlWindow::~SfmlWindow() {
-	delete window;
+	delete _window;
 }
 
 void SfmlWindow::display() {
-	window->display();
+	_window->display();
 }
 
 int keyCodeMap(sf::Keyboard::Key keyCode) {
@@ -162,7 +162,7 @@ Window::Event SfmlWindow::pollEvents() {
 	Event event;
 	sf::Event sfmlEvent;
 
-	while (window->pollEvent(sfmlEvent)) {
+	while (_window->pollEvent(sfmlEvent)) {
 
 		switch (sfmlEvent.type) {
 
@@ -318,45 +318,21 @@ Window::Event SfmlWindow::pollEvents() {
 	return event;
 }
 
-void SfmlWindow::render(Canvas *working, int x, int y, int w, int h) {
-	AVOCADO_UNUSED(x);
-	AVOCADO_UNUSED(y);
-	AVOCADO_UNUSED(w);
-	AVOCADO_UNUSED(h);
-	sf::Sprite sprite(
-		Canvas::superCast<SfmlCanvas>(working)->renderTexture->getTexture()
-	);
-	window->clear();
-	window->draw(sprite);
-}
-
-void SfmlWindow::render(Image *working, int x, int y, int w, int h) {
-	AVOCADO_UNUSED(x);
-	AVOCADO_UNUSED(y);
-	AVOCADO_UNUSED(w);
-	AVOCADO_UNUSED(h);
-	sf::Sprite sprite(
-		*Image::superCast<SfmlImage>(working)->texture
-	);
-	window->clear();
-	window->draw(sprite);
-}
-
 void SfmlWindow::set() {
 
 	// Translate Window flags to SFML flags.
 	unsigned int sfmlStyle = sf::Style::Default;
 	if (flags() & Flags_Fullscreen) sfmlStyle |= sf::Style::Fullscreen;
 
-	window->create(
+	_window->create(
 		sf::VideoMode(width(), height()),
 		m_title,
 		sfmlStyle
 	);
 
-	window->setKeyRepeatEnabled(false);
-	window->setVerticalSyncEnabled(true);
-	window->clear();
+	_window->setKeyRepeatEnabled(false);
+	_window->setVerticalSyncEnabled(true);
+	_window->clear();
 }
 
 void SfmlWindow::setFlags(WindowFlags flags) {
@@ -372,7 +348,7 @@ void SfmlWindow::setSize(int width, int height) {
 }
 
 void SfmlWindow::setMouseVisibility(bool visible) {
-	window->setMouseCursorVisible(visible);
+	_window->setMouseCursorVisible(visible);
 }
 
 void SfmlWindow::setWindowTitle(const std::string &title, const std::string &iconified) {
@@ -380,7 +356,11 @@ void SfmlWindow::setWindowTitle(const std::string &title, const std::string &ico
 
 	m_title = title;
 
-	window->setTitle(m_title);
+	_window->setTitle(m_title);
+}
+
+sf::RenderWindow *SfmlWindow::window() {
+	return _window;
 }
 
 }

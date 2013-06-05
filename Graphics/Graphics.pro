@@ -6,13 +6,13 @@ SOURCES += \
 	\
 	SfmlGraphicsService.cpp \
 	\
-	SfmlCanvas.cpp SfmlFont.cpp SfmlImage.cpp SfmlWindow.cpp
+	SfmlCanvas.cpp SfmlFont.cpp SfmlImage.cpp SfmlSprite.cpp SfmlWindow.cpp
 
 HEADERS += \
 	\
 	SfmlGraphicsService.h \
 	\
-	SfmlCanvas.h SfmlFont.h SfmlImage.h SfmlWindow.h
+	SfmlCanvas.h SfmlFont.h SfmlImage.h SfmlSprite.h SfmlWindow.h
 
 INCLUDEPATH += ../deps/SFML/include
 

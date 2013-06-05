@@ -52,7 +52,7 @@ void SfmlFont::render(int x, int y, const std::string &text, Canvas *destination
 	}
 	sprite.setTextureRect(rect);
 
-	Canvas::superCast<SfmlCanvas>(destination)->renderTexture->draw(
+	Canvas::superCast<SfmlCanvas>(destination)->renderTexture()->draw(
 		sprite
 	);
 }
