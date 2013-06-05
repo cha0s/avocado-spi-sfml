@@ -45,6 +45,7 @@ void SfmlSprite::renderTo(Window *destination) const {
 
 	window->window()->clear();
 	window->window()->draw(_sprite);
+	window->window()->display();
 }
 
 void SfmlSprite::setAlpha(double alpha) {
