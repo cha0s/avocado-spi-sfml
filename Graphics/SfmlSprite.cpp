@@ -7,6 +7,8 @@
 
 namespace avo {
 
+AbstractFactory<SfmlSprite> *SfmlSprite::factory = new AbstractFactory<SfmlSprite>;
+
 SfmlSprite::SfmlSprite()
 	: Sprite()
 {

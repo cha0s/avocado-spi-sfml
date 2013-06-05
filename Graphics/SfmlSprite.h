@@ -45,6 +45,8 @@ public:
 
 	void setSourceRectangle(int x, int y, int w, int h);
 
+	static AbstractFactory<SfmlSprite> *factory;
+
 private:
 
 	mutable sf::Sprite _sprite;
