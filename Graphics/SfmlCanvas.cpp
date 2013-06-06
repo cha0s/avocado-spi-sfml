@@ -59,21 +59,20 @@ unsigned int SfmlCanvas::pixelAt(int x, int y) const {
 	return 0;
 }
 
-void SfmlCanvas::drawCircle(int x, int y, int radius, int r, int g, int b, int a, GraphicsService::BlendMode drawMode) {
-	AVOCADO_UNUSED(drawMode);
+void SfmlCanvas::drawCircle(int x, int y, int radius, int r, int g, int b, double a, GraphicsService::BlendMode blendMode) {
 
 	sf::CircleShape circle;
 	circle.setRadius(radius);
 	circle.setPointCount(60);
-	circle.setFillColor(sf::Color(r, g, b, a));
-	circle.setOutlineColor(sf::Color(r, g, b, a));
+	circle.setFillColor(sf::Color(r, g, b, a * 255.0));
+	circle.setOutlineColor(sf::Color(r, g, b, a * 255.0));
 	circle.setOutlineThickness(1);
 	circle.setPosition(x - radius, y - radius);
 
 	_renderTexture->draw(
 		circle,
 		sf::RenderStates(
-			GraphicsService::BlendMode_Blend == drawMode ?
+			GraphicsService::BlendMode_Blend == blendMode ?
 				sf::BlendAlpha
 			:
 				sf::BlendNone
@@ -81,43 +80,43 @@ void SfmlCanvas::drawCircle(int x, int y, int radius, int r, int g, int b, int a
 	);
 }
 
-void SfmlCanvas::drawFilledBox(int x, int y, int w, int h, int r, int g, int b, int a, GraphicsService::BlendMode drawMode) {
-	AVOCADO_UNUSED(drawMode);
+void SfmlCanvas::drawFilledBox(int x, int y, int w, int h, int r, int g, int b, double a, GraphicsService::BlendMode blendMode) {
+	AVOCADO_UNUSED(blendMode);
 
 	sf::RectangleShape box;
 	box.setSize(sf::Vector2f(w, h));
-	box.setOutlineColor(sf::Color(r, g, b, a));
-	box.setFillColor(sf::Color(r, g, b, a));
+	box.setOutlineColor(sf::Color(r, g, b, a * 255.0));
+	box.setFillColor(sf::Color(r, g, b, a * 255.0));
 	box.setPosition(x, y);
 	_renderTexture->draw(box);
 }
 
-void SfmlCanvas::drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, int a, GraphicsService::BlendMode drawMode) {
-	AVOCADO_UNUSED(drawMode);
+void SfmlCanvas::drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, double a, GraphicsService::BlendMode blendMode) {
+	AVOCADO_UNUSED(blendMode);
 
 	sf::VertexArray lines(sf::LinesStrip, 2);
 	lines[0].position = sf::Vector2f(x1, y1);
-	lines[0].color = sf::Color(r, g, b, a);
+	lines[0].color = sf::Color(r, g, b, a * 255.0);
 	lines[1].position = sf::Vector2f(x2, y2);
-	lines[1].color = sf::Color(r, g, b, a);
+	lines[1].color = sf::Color(r, g, b, a * 255.0);
 
 	_renderTexture->draw(lines);
 }
 
-void SfmlCanvas::drawLineBox(int x, int y, int w, int h, int r, int g, int b, int a, GraphicsService::BlendMode drawMode) {
-	AVOCADO_UNUSED(drawMode);
+void SfmlCanvas::drawLineBox(int x, int y, int w, int h, int r, int g, int b, double a, GraphicsService::BlendMode blendMode) {
+	AVOCADO_UNUSED(blendMode);
 
 	sf::RectangleShape box;
 	box.setSize(sf::Vector2f(w, h));
-	box.setOutlineColor(sf::Color(r, g, b, a));
+	box.setOutlineColor(sf::Color(r, g, b, a * 255.0));
 	box.setOutlineThickness(1);
 	box.setFillColor(sf::Color(0, 0, 0, 0));
 	box.setPosition(x, y);
 	_renderTexture->draw(box);
 }
 
-void SfmlCanvas::fill(int r, int g, int b, int a) {
-	drawFilledBox(0, 0, width(), height(), r, g, b, a);
+void SfmlCanvas::fill(int r, int g, int b, double a) {
+	drawFilledBox(0, 0, width(), height(), r, g, b, a * 255.0);
 }
 
 int SfmlCanvas::height() const {
