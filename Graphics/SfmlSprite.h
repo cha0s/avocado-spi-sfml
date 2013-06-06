@@ -39,7 +39,7 @@ public:
 
 	void setPosition(int x, int y);
 
-	void setRotation(double angle);
+	void setRotation(double angle, int orientX, int orientY);
 
 	void setScale(double factorX, double factorY);
 
@@ -51,6 +51,7 @@ private:
 
 	mutable sf::Sprite _sprite;
 	sf::RenderStates _renderStates;
+	sf::Vector2f _rotationOrientation;
 
 };
 

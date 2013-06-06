@@ -25,10 +25,21 @@ void SfmlSprite::renderTo(Canvas *destination) const {
 		_sprite.setTexture(Canvas::superCast<SfmlCanvas>(canvas())->renderTexture()->getTexture());
 	}
 
+	sf::Vector2f origin = _sprite.getOrigin();
+	sf::Vector2f position = _sprite.getPosition();
+
+	if (_rotationOrientation != sf::Vector2f(0, 0)) {
+		_sprite.setOrigin(_rotationOrientation);
+		_sprite.move(_rotationOrientation);
+	}
+
 	Canvas::superCast<SfmlCanvas>(destination)->renderTexture()->draw(
 		_sprite,
 		_renderStates
 	);
+
+	_sprite.setOrigin(origin);
+	_sprite.setPosition(position);
 }
 
 void SfmlSprite::renderTo(Window *destination) const {
@@ -44,7 +55,20 @@ void SfmlSprite::renderTo(Window *destination) const {
 	SfmlWindow *window = Window::superCast<SfmlWindow>(destination);
 
 	window->window()->clear();
+
+	sf::Vector2f origin = _sprite.getOrigin();
+	sf::Vector2f position = _sprite.getPosition();
+
+	if (_rotationOrientation != sf::Vector2f(0, 0)) {
+		_sprite.setOrigin(_rotationOrientation);
+		_sprite.move(_rotationOrientation);
+	}
+
 	window->window()->draw(_sprite);
+
+	_sprite.setOrigin(origin);
+	_sprite.setPosition(position);
+
 	window->window()->display();
 }
 
@@ -67,8 +91,9 @@ void SfmlSprite::setPosition(int x, int y) {
 	_sprite.setPosition(sf::Vector2f(x, y));
 }
 
-void SfmlSprite::setRotation(double angle) {
+void SfmlSprite::setRotation(double angle, int orientX, int orientY) {
 	_sprite.setRotation(angle);
+	_rotationOrientation = sf::Vector2f(orientX, orientY);
 }
 
 void SfmlSprite::setScale(double factorX, double factorY) {
