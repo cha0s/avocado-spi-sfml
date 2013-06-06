@@ -116,7 +116,7 @@ void SfmlCanvas::drawLineBox(int x, int y, int w, int h, int r, int g, int b, do
 }
 
 void SfmlCanvas::fill(int r, int g, int b, double a) {
-	drawFilledBox(0, 0, width(), height(), r, g, b, a * 255.0, GraphicsService::BlendMode_Blend);
+	drawFilledBox(0, 0, width(), height(), r, g, b, a, GraphicsService::BlendMode_Blend);
 }
 
 int SfmlCanvas::height() const {
