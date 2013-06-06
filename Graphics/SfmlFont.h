@@ -71,7 +71,6 @@ public:
 private:
 
 	sf::Font *font;
-	sf::RenderTexture *texture;
 	sf::Text::Style sfmlStyle;
 	int size;
 };

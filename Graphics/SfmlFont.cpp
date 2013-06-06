@@ -6,14 +6,12 @@ AbstractFactory<Font> *SfmlFont::factory = new AbstractFactory<SfmlFont>;
 
 SfmlFont::SfmlFont()
 	: font(new sf::Font())
-	, texture(new sf::RenderTexture())
 {
 	setSize(12);
 }
 
 SfmlFont::SfmlFont(const boost::filesystem::path &uri)
 	: font(new sf::Font())
-	, texture(new sf::RenderTexture())
 {
 
 	if (!font->loadFromFile(uri.string().c_str())) throw std::runtime_error(
@@ -33,24 +31,15 @@ void SfmlFont::render(int x, int y, const std::string &text, Canvas *destination
 
 	sf::Text sfmlText = sf::Text(text, *font, size);
 	sfmlText.setColor(sf::Color(r, g, b, a * 255.0));
-
-	texture->clear(sf::Color(0, 0, 0, 0));
-	texture->display();
-	texture->draw(sfmlText);
-
-	sf::Sprite sprite;
-	sprite.setTexture(texture->getTexture());
-	sprite.setPosition(sf::Vector2f(x, y));
+	sfmlText.setPosition(sf::Vector2f(x, y));
 
 	Canvas::superCast<SfmlCanvas>(destination)->renderTexture()->draw(
-		sprite
+		sfmlText
 	);
 }
 
 void SfmlFont::setSize(int size) {
 	this->size = size;
-
-	texture->create(640, size * 2);
 }
 
 void SfmlFont::setStyle(FontStyle style) {
