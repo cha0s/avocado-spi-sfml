@@ -29,7 +29,7 @@ SfmlFont::~SfmlFont() {
 //	delete font;
 }
 
-void SfmlFont::render(int x, int y, const std::string &text, Canvas *destination, int r, int g, int b, int a) const {
+void SfmlFont::render(int x, int y, const std::string &text, Canvas *destination, int r, int g, int b, double a) const {
 
 	sf::Text sfmlText = sf::Text(text, *font, size);
 	sfmlText.setColor(sf::Color(r, g, b, a * 255.0));
