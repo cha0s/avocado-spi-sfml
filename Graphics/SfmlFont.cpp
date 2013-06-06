@@ -29,10 +29,10 @@ SfmlFont::~SfmlFont() {
 //	delete font;
 }
 
-void SfmlFont::render(int x, int y, const std::string &text, Canvas *destination, int r, int g, int b, int a, int cx, int cy, int cw, int ch) const {
+void SfmlFont::render(int x, int y, const std::string &text, Canvas *destination, int r, int g, int b, int a) const {
 
 	sf::Text sfmlText = sf::Text(text, *font, size);
-	sfmlText.setColor(sf::Color(r, g, b, a));
+	sfmlText.setColor(sf::Color(r, g, b, a * 255.0));
 
 	texture->clear(sf::Color(0, 0, 0, 0));
 	texture->display();
@@ -41,16 +41,6 @@ void SfmlFont::render(int x, int y, const std::string &text, Canvas *destination
 	sf::Sprite sprite;
 	sprite.setTexture(texture->getTexture());
 	sprite.setPosition(sf::Vector2f(x, y));
-	sf::IntRect rect(cx, cy, cw, ch);
-	sf::FloatRect frect = sfmlText.getGlobalBounds();
-
-	if (0 == rect.width) {
-		rect.width = frect.width;
-	}
-	if (0 == rect.height) {
-		rect.height = frect.height * 2;
-	}
-	sprite.setTextureRect(rect);
 
 	Canvas::superCast<SfmlCanvas>(destination)->renderTexture()->draw(
 		sprite
