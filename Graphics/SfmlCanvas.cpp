@@ -63,7 +63,7 @@ void SfmlCanvas::drawCircle(int x, int y, int radius, int r, int g, int b, doubl
 
 	sf::CircleShape circle;
 	circle.setRadius(radius);
-	circle.setPointCount(60);
+	circle.setPointCount(30);
 	circle.setFillColor(sf::Color(r, g, b, a * 255.0));
 	circle.setOutlineColor(sf::Color(r, g, b, a * 255.0));
 	circle.setOutlineThickness(1);
@@ -76,7 +76,7 @@ void SfmlCanvas::drawCircle(int x, int y, int radius, int r, int g, int b, doubl
 				sf::BlendAlpha
 			:
 				sf::BlendNone
-			)
+		)
 	);
 }
 
