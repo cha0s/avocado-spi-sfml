@@ -104,10 +104,10 @@ void SfmlSprite::setSourceRectangle(int x, int y, int w, int h) {
 
 	sf::IntRect rect(x, y, w, h);
 	if (0 == rect.width) {
-		rect.width = canvas() ? canvas()->width() : image()->width();
+		rect.width = canvas() ? canvas()->width() : (image() ? image()->width() : 0);
 	}
 	if (0 == rect.height) {
-		rect.height = canvas() ? canvas()->height() : image()->height();
+		rect.height = canvas() ? canvas()->height() : (image() ? image()->height() : 0);
 	}
 	_sprite.setTextureRect(rect);
 }
