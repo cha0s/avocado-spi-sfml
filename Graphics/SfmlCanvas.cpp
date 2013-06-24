@@ -81,14 +81,21 @@ void SfmlCanvas::drawCircle(int x, int y, int radius, int r, int g, int b, doubl
 }
 
 void SfmlCanvas::drawFilledBox(int x, int y, int w, int h, int r, int g, int b, double a, GraphicsService::BlendMode blendMode) {
-	AVOCADO_UNUSED(blendMode);
 
 	sf::RectangleShape box;
 	box.setSize(sf::Vector2f(w, h));
 	box.setOutlineColor(sf::Color(r, g, b, a * 255.0));
 	box.setFillColor(sf::Color(r, g, b, a * 255.0));
 	box.setPosition(x, y);
-	_renderTexture->draw(box);
+	_renderTexture->draw(
+		box,
+		sf::RenderStates(
+			GraphicsService::BlendMode_Blend == blendMode ?
+				sf::BlendAlpha
+			:
+				sf::BlendNone
+		)
+	);
 }
 
 void SfmlCanvas::drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, double a, GraphicsService::BlendMode blendMode) {
@@ -116,7 +123,12 @@ void SfmlCanvas::drawLineBox(int x, int y, int w, int h, int r, int g, int b, do
 }
 
 void SfmlCanvas::fill(int r, int g, int b, double a) {
-	drawFilledBox(0, 0, width(), height(), r, g, b, a, GraphicsService::BlendMode_Blend);
+	if (0 == a) {
+		_renderTexture->clear(sf::Color(r, g, b, 0));
+	}
+	else {
+		drawFilledBox(0, 0, width(), height(), r, g, b, a, GraphicsService::BlendMode_Blend);
+	}
 }
 
 int SfmlCanvas::height() const {
