@@ -32,11 +32,15 @@ void SfmlSprite::renderTo(Canvas *destination) const {
 		_sprite.setOrigin(_rotationOrientation);
 		_sprite.move(_rotationOrientation);
 	}
+	
+	SfmlCanvas *destinationCanvas = Canvas::superCast<SfmlCanvas>(destination);
 
-	Canvas::superCast<SfmlCanvas>(destination)->renderTexture()->draw(
+	destinationCanvas->renderTexture()->draw(
 		_sprite,
 		_renderStates
 	);
+
+	destinationCanvas->renderTexture()->display();
 
 	_sprite.setOrigin(origin);
 	_sprite.setPosition(position);
