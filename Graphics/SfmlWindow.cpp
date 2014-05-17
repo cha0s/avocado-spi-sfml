@@ -185,7 +185,7 @@ Window::Event SfmlWindow::pollEvents() {
 		case sf::Event::JoystickMoved: {
 
 			Event::JoyAxis joyAxis = {
-				sfmlEvent.joystickMove.joystickId,
+				static_cast<int>(sfmlEvent.joystickMove.joystickId),
 				sfmlEvent.joystickMove.axis,
 				sfmlEvent.joystickMove.position / JoystickMagnitude
 			};
@@ -209,8 +209,8 @@ Window::Event SfmlWindow::pollEvents() {
 		case sf::Event::JoystickButtonPressed: {
 
 			Event::JoyButtonDown joyButtonDown = {
-				sfmlEvent.joystickButton.joystickId,
-				sfmlEvent.joystickButton.button
+				static_cast<int>(sfmlEvent.joystickButton.joystickId),
+				static_cast<int>(sfmlEvent.joystickButton.button)
 			};
 
 			deque<Event::JoyButtonDown>::iterator i = find(
@@ -229,8 +229,8 @@ Window::Event SfmlWindow::pollEvents() {
 		case sf::Event::JoystickButtonReleased: {
 
 			Event::JoyButtonUp joyButtonUp = {
-				sfmlEvent.joystickButton.joystickId,
-				sfmlEvent.joystickButton.button
+				static_cast<int>(sfmlEvent.joystickButton.joystickId),
+				static_cast<int>(sfmlEvent.joystickButton.button)
 			};
 
 			deque<Event::JoyButtonUp>::iterator i = find(
