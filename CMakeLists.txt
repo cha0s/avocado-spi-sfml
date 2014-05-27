@@ -23,7 +23,9 @@ link_directories(
 
 )
 
-set(LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_DIR}/lib")
+if(NOT DEFINED LIBRARY_OUTPUT_PATH)
+	set(LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_DIR}/lib")
+endif()
 
 add_subdirectory(deps)
 add_subdirectory(Core)
