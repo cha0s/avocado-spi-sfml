@@ -1,15 +1,15 @@
 #ifndef AVOCADO_SFMLSPRITE_H
 #define AVOCADO_SFMLSPRITE_H
 
-#include "core/avocado-global.h"
+#include "avocado-global.h"
 
 #define SFML_STATIC
 
 #include <SFML/Graphics.hpp>
 
-#include "core/Graphics/Canvas.h"
-#include "core/Graphics/Sprite.h"
-#include "core/Graphics/Window.h"
+#include "Graphics/Canvas.h"
+#include "Graphics/Sprite.h"
+#include "Graphics/Window.h"
 
 namespace avo {
 

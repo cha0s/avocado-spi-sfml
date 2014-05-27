@@ -1,13 +1,13 @@
 #ifndef AVOCADO_SFMLCANVAS_H
 #define AVOCADO_SFMLCANVAS_H
 
-#include "core/avocado-global.h"
+#include "avocado-global.h"
 
 #define SFML_STATIC
 
 #include <SFML/Graphics.hpp>
 
-#include "core/Graphics/Canvas.h"
+#include "Graphics/Canvas.h"
 
 namespace avo {
 

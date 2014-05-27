@@ -1,13 +1,13 @@
 #ifndef AVOCADO_SFMLWINDOW_H
 #define AVOCADO_SFMLWINDOW_H
 
-#include "core/avocado-global.h"
+#include "avocado-global.h"
 
 #define SFML_STATIC
 
 #include <string>
 
-#include "core/Graphics/Window.h"
+#include "Graphics/Window.h"
 
 #include <SFML/Graphics.hpp>
 

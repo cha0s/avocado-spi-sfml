@@ -1,11 +1,11 @@
 #ifndef AVOCADO_SFMLTIMINGSERVICE_H
 #define AVOCADO_SFMLTIMINGSERVICE_H
 
-#include "core/avocado-global.h"
+#include "avocado-global.h"
 
 #define SFML_STATIC
 
-#include "core/Timing/TimingService.h"
+#include "Timing/TimingService.h"
 
 namespace avo {
 

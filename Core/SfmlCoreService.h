@@ -1,9 +1,9 @@
 #ifndef AVOCADO_SFMLCORESERVICE_H
 #define AVOCADO_SFMLCORESERVICE_H
 
-#include "core/avocado-global.h"
+#include "avocado-global.h"
 
-#include "core/Core/CoreService.h"
+#include "Core/CoreService.h"
 
 namespace avo {
 

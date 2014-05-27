@@ -1,13 +1,13 @@
 #ifndef AVOCADO_SFMLIMAGE_H
 #define AVOCADO_SFMLIMAGE_H
 
-#include "core/avocado-global.h"
+#include "avocado-global.h"
 
 #define SFML_STATIC
 
 #include <SFML/Graphics.hpp>
 
-#include "core/Graphics/Image.h"
+#include "Graphics/Image.h"
 
 #include "SfmlCanvas.h"
 

@@ -1,11 +1,11 @@
 #ifndef AVOCADO_FONT_H
 #define AVOCADO_FONT_H
 
-#include "core/avocado-global.h"
+#include "avocado-global.h"
 
 #define SFML_STATIC
 
-#include "core/Graphics/Font.h"
+#include "Graphics/Font.h"
 #include "SfmlCanvas.h"
 
 namespace avo {
