@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 
 add_library(SoundService-SFML SHARED
 	
+	implementSpi.cpp
+	
 	SfmlSoundService.cpp
 	
 	SfmlSample.cpp

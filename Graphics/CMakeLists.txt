@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 
 add_library(GraphicsService-SFML SHARED
 	
+	implementSpi.cpp
+	
 	SfmlGraphicsService.cpp
 	
 	SfmlCanvas.cpp
