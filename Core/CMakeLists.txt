@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-add_library(CoreService-SFML SHARED
+add_library(CoreService-sfml SHARED
 	
 	implementSpi.cpp
 	
@@ -8,4 +8,4 @@ add_library(CoreService-SFML SHARED
 	
 )
 
-avocado_build_spii_name(CoreService-SFML)
+avocado_build_spii_name(CoreService-sfml)

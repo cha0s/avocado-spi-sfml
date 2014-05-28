@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-add_library(GraphicsService-SFML SHARED
+add_library(GraphicsService-sfml SHARED
 	
 	implementSpi.cpp
 	
@@ -14,7 +14,7 @@ add_library(GraphicsService-SFML SHARED
 	
 )
 
-target_link_libraries(GraphicsService-SFML
+target_link_libraries(GraphicsService-sfml
 	
 	sfml-graphics
 	sfml-window
@@ -33,7 +33,7 @@ if(WIN32)
 	
 	)
 
-	target_link_libraries(GraphicsService-SFML
+	target_link_libraries(GraphicsService-sfml
 	
 		glew
 
@@ -41,7 +41,7 @@ if(WIN32)
 	
 else()
 	
-	target_link_libraries(GraphicsService-SFML
+	target_link_libraries(GraphicsService-sfml
 	
 		GL Xrandr GLEW rt
 
@@ -49,4 +49,4 @@ else()
 	
 endif()
 
-avocado_build_spii_name(GraphicsService-SFML)
+avocado_build_spii_name(GraphicsService-sfml)

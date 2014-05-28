@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-add_library(TimingService-SFML SHARED
+add_library(TimingService-sfml SHARED
 	
 	implementSpi.cpp
 	
@@ -10,7 +10,7 @@ add_library(TimingService-SFML SHARED
 	
 )
 
-target_link_libraries(TimingService-SFML
+target_link_libraries(TimingService-sfml
 	
 	sfml-system
 
@@ -18,7 +18,7 @@ target_link_libraries(TimingService-SFML
 
 if(UNIX)
 
-	target_link_libraries(TimingService-SFML
+	target_link_libraries(TimingService-sfml
 	
 		rt
 
@@ -26,4 +26,4 @@ if(UNIX)
 	
 endif()
 
-avocado_build_spii_name(TimingService-SFML)
+avocado_build_spii_name(TimingService-sfml)

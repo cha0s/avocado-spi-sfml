@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-add_library(SoundService-SFML SHARED
+add_library(SoundService-sfml SHARED
 	
 	implementSpi.cpp
 	
@@ -11,7 +11,7 @@ add_library(SoundService-SFML SHARED
 	
 )
 
-target_link_libraries(SoundService-SFML
+target_link_libraries(SoundService-sfml
 	
 	sfml-audio
 	sfml-system
@@ -28,7 +28,7 @@ if(WIN32)
 	
 	)
 
-	target_link_libraries(SoundService-SFML
+	target_link_libraries(SoundService-sfml
 	
 		openal32
 
@@ -36,7 +36,7 @@ if(WIN32)
 	
 else()
 	
-	target_link_libraries(SoundService-SFML
+	target_link_libraries(SoundService-sfml
 	
 		openal
 
@@ -44,4 +44,4 @@ else()
 	
 endif()
 
-avocado_build_spii_name(SoundService-SFML)
+avocado_build_spii_name(SoundService-sfml)
