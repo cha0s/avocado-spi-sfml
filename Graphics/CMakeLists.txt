@@ -46,3 +46,5 @@ else()
 	)
 	
 endif()
+
+avocado_build_spii_name(GraphicsService-SFML)

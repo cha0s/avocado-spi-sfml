@@ -23,3 +23,5 @@ if(UNIX)
 	)
 	
 endif()
+
+avocado_build_spii_name(TimingService-SFML)

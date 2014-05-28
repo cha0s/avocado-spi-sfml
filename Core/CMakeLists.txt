@@ -5,3 +5,5 @@ add_library(CoreService-SFML SHARED
 	SfmlCoreService.cpp
 	
 )
+
+avocado_build_spii_name(CoreService-SFML)

@@ -41,3 +41,5 @@ else()
 	)
 	
 endif()
+
+avocado_build_spii_name(SoundService-SFML)
