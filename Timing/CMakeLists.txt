@@ -5,8 +5,6 @@ add_library(TimingService-sfml SHARED
 	implementSpi.cpp
 	
 	SfmlTimingService.cpp
-
-	SfmlCounter.cpp
 	
 )
 

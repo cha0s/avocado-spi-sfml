@@ -11,7 +11,6 @@ namespace avo {
 AbstractFactory<SfmlTimingService> *SfmlTimingService::factory = new AbstractFactory<SfmlTimingService>;
 
 SfmlTimingService::SfmlTimingService() {
-	Counter::factoryManager.setInstance(SfmlCounter::factory);
 }
 
 SfmlTimingService::~SfmlTimingService() {
