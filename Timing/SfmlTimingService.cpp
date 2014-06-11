@@ -4,8 +4,6 @@
 
 #include <SFML/System/Sleep.hpp>
 
-#include "SfmlCounter.h"
-
 namespace avo {
 
 AbstractFactory<SfmlTimingService> *SfmlTimingService::factory = new AbstractFactory<SfmlTimingService>;
